@@ -1,0 +1,424 @@
+{
+    "metrics": [{
+        "name": "impressions",
+        "title": "Impressions",
+        "info": "Number of displays of ads",
+        "group": "visitsAndConversions",
+        "is_has_attribution_model": false,
+        "is_absolute": true,
+        "order": 98,
+        "type": "integer",
+        "formula": "{impressions} ? {impressions} : 0"
+    }, {
+        "name": "ctr",
+        "title": "CTR",
+        "info": "Click-through rate of ads\n    Visits \/ Displays * 100%",
+        "group": "visitsAndConversions",
+        "is_has_attribution_model": false,
+        "is_absolute": false,
+        "order": 99,
+        "type": "percent",
+        "formula": "{impressions} ? (100 * {visits} \/ {impressions}) : 0"
+    }, {
+        "name": "visits",
+        "title": "Visits",
+        "info": "Number of website visits with unique advertising source",
+        "group": "visitsAndConversions",
+        "is_has_attribution_model": false,
+        "is_absolute": true,
+        "order": 100,
+        "type": "integer",
+        "formula": "{visits} ? {visits} : 0"
+    }, {
+        "name": "conversion_visits_to_leads",
+        "title": "Leads Conversion",
+        "info": "Share of leads from total number of visits\n    Leads \/ Visits * 100%",
+        "group": "visitsAndConversions",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 150,
+        "type": "percent",
+        "formula": "{visits} ? (100*{leads}\/{visits}) : 0"
+    }, {
+        "name": "leads",
+        "title": "Leads",
+        "info": "Leads are any types of requests received by your business. For example, these may be forms sent via website, calls, dialogues of Online Consultants, etc.",
+        "group": "orders",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 200,
+        "type": "integer",
+        "formula": "{leads} ? {leads} : 0"
+    }, {
+        "name": "conversion_leads_to_sales",
+        "title": "Sales Conversion",
+        "info": "Share of sales from total number of Leads\n    Sales \/ Leads * 100%",
+        "group": "visitsAndConversions",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 300,
+        "type": "percent",
+        "formula": "{leads} ? (100*{sales}\/{leads}) : 0"
+    }, {
+        "name": "sales",
+        "title": "Sales",
+        "info": "Leads with status \"Paid\"",
+        "group": "orders",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 400,
+        "type": "integer",
+        "formula": "{sales} ? {sales} : 0"
+    }, {
+        "name": "leads_in_progress",
+        "title": "Potential sales",
+        "info": "Leads with status \"In progress\"",
+        "group": "orders",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 2100,
+        "type": "integer",
+        "formula": "{leads_in_progress} ? {leads_in_progress} : 0"
+    }, {
+        "name": "conversion_visits_to_sales",
+        "title": "Absolute conversion",
+        "info": "Share of sales from total number of visits\n    Sales \/ Visits * 100%",
+        "group": "visitsAndConversions",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 600,
+        "type": "percent",
+        "formula": "{visits} ? (100*{sales}\/{visits}) : 0"
+    }, {
+        "name": "potential_sales",
+        "title": "Predicted sales",
+        "info": "Leads with status \"Paid\" and \"In progress\"",
+        "group": "orders",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 2600,
+        "type": "integer",
+        "formula": "{sales}+{leads_in_progress}"
+    }, {
+        "name": "canceled_leads",
+        "title": "Rejected deals",
+        "info": "Leads with status \"Canceled\"",
+        "group": "orders",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 2300,
+        "type": "integer",
+        "formula": "{leads}-{leads_in_progress}-{sales}"
+    }, {
+        "name": "revenue_in_progress",
+        "title": "Potential revenue",
+        "info": "Potential revenue from applications with status \"In progress\"",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 2200,
+        "type": "money",
+        "formula": "{revenue_in_progress}\n                  ? {revenue_in_progress}\n                  : ({sales} ? {revenue}*{leads_in_progress}\/{sales} : 0)"
+    }, {
+        "name": "revenue",
+        "title": "Revenue",
+        "info": "Revenue from leads with status \"Paid\"",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 700,
+        "type": "money",
+        "formula": "{revenue} ? {revenue} : 0"
+    }, {
+        "name": "potential_revenue",
+        "title": "Predicted revenue",
+        "info": "Revenue from leads with status \"Paid\" and \"In progress\"",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 2700,
+        "type": "money",
+        "formula": "({revenue}?{revenue}:0)+({revenue_in_progress}?{revenue_in_progress}:({sales}?{revenue}*{leads_in_progress}\/{sales}:0))"
+    }, {
+        "name": "revenue_canceled",
+        "title": "Revenue of canceled leads",
+        "info": "Revenue of leads with status \"Canceled\"",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 2750,
+        "type": "money",
+        "formula": "{revenue_canceled} ? {revenue_canceled} : 0"
+    }, {
+        "name": "net_cost",
+        "title": "First Cost",
+        "info": "First cost of lead can be set up in the Settings section or be imported from a CRM.",
+        "group": "cost",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 1000,
+        "type": "money",
+        "formula": "{net_cost}\n                    ? {net_cost}\n                    : ( {revenue} * (1 - ({$profitFactor} ? {$profitFactor} : 1)) )"
+    }, {
+        "name": "profit",
+        "title": "Profit",
+        "info": "Difference between Revenue and First Cost\n    Revenue - First Cost",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 1100,
+        "type": "money",
+        "formula": "{net_cost}\n                    ? ( {revenue} - {net_cost} )\n                    : ( {revenue} * {$profitFactor} )"
+    }, {
+        "name": "potential_profit",
+        "title": "Predicted profit",
+        "info": "Maximally possible profit as per leads with status \"Paid\" and \"In progress\"",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 2800,
+        "type": "money",
+        "formula": "{$isHasCost}\n                    ? ( ({revenue} ? {revenue} : 0)\n                        + ({revenue_in_progress}\n                            ? {revenue_in_progress}\n                            : ( {sales} ? {sales} * {leads_in_progress} \/ {sales} : 0 ))\n                        - {net_cost} )\n                    : ( ( ({revenue} ? {revenue} : 0)\n                        + ({revenue_in_progress}\n                            ? {revenue_in_progress}\n                            : ( {sales} ? {revenue} * {leads_in_progress} \/ {sales} : 0 )) )\n                        * {$profitFactor} )"
+    }, {
+        "name": "average_sale",
+        "title": "Average revenue",
+        "info": "Average amount of sales\n    Revenue \/ Sales",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 800,
+        "type": "money",
+        "formula": "{sales}?{revenue}\/{sales}:0"
+    }, {
+        "name": "potential_average_sale",
+        "title": "Predicted average revenue",
+        "info": "Average amount of sales taking into account potential sales\n    Predicted revenue \/ Predicted sales",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 2900,
+        "type": "money",
+        "formula": "({leads_in_progress}+{sales})\n                    ?({revenue}+({revenue_in_progress}?{revenue_in_progress}:({sales}?{revenue}*{leads_in_progress}\/{sales}:0)))\/({leads_in_progress}+{sales})\n                    :0"
+    }, {
+        "name": "average_profit",
+        "title": "Average profit",
+        "info": "Average profit from a single sale\n    Profit \/ Sales",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 900,
+        "type": "money",
+        "formula": "{sales}?(({net_cost}?({revenue}-{net_cost}):({revenue}*{$profitFactor}))\/{sales}):0"
+    }, {
+        "name": "marketing_cost",
+        "title": "Cost",
+        "info": "Marketing costs",
+        "group": "cost",
+        "is_has_attribution_model": false,
+        "is_absolute": true,
+        "order": 1300,
+        "type": "money",
+        "formula": "{marketing_cost} ? {marketing_cost} : 0"
+    }, {
+        "name": "cpo",
+        "title": "CPO",
+        "info": "Average cost of retention of a paid lead\n    Costs \/ Sales",
+        "group": "cost",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 1900,
+        "type": "money",
+        "formula": "{marketing_cost} ? ({sales}?{marketing_cost}\/{sales}:0) : 0"
+    }, {
+        "name": "roi",
+        "title": "ROI",
+        "info": "Return on investment\n    (Profit - Costs) \/ Costs * 100%",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 1400,
+        "type": "percent",
+        "formula": "{marketing_cost} ? (100*(({net_cost} ? ({revenue}-{net_cost}) : ({revenue}*{$profitFactor}))-{marketing_cost})\/{marketing_cost}) : 0"
+    }, {
+        "name": "romi",
+        "title": "ROMI",
+        "info": "Return on investment without fist cost\n    (Revenue - Costs) \/ Costs * 100%",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 1500,
+        "type": "percent",
+        "formula": "{marketing_cost} ? (100 * ({revenue} - {marketing_cost})\/{marketing_cost}) : 0"
+    }, {
+        "name": "potential_roi",
+        "title": "Predicted ROI",
+        "info": "Return on investment taking into account leads with status \"Paid\" and \"In progress\"\n    (Predicted profit - Costs) \/ Costs * 100%",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 2500,
+        "type": "percent",
+        "formula": "{marketing_cost}\n                    ? (100*(\n                        ({net_cost}\n                            ? ({revenue}+({revenue_in_progress}?{revenue_in_progress}:({sales}?{revenue}*{leads_in_progress}\/{sales}:0))-{net_cost})\n                            : (({revenue}+({revenue_in_progress}?{revenue_in_progress}:({sales}?{revenue}*{leads_in_progress}\/{sales}:0)))*{$profitFactor}))-{marketing_cost})\n                        \/{marketing_cost})\n                    : 0"
+    }, {
+        "name": "cpc",
+        "title": "CPC",
+        "info": "Average cost of a visit\n    Costs \/ Visits",
+        "group": "cost",
+        "is_has_attribution_model": false,
+        "is_absolute": false,
+        "order": 1700,
+        "type": "money",
+        "formula": "{visits} ? {marketing_cost}\/{visits} : 0"
+    }, {
+        "name": "cpl",
+        "title": "CPL",
+        "info": "Average cost of a lead\n    Costs \/ Leads",
+        "group": "cost",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 1800,
+        "type": "money",
+        "formula": "{leads} ? {marketing_cost}\/{leads} : 0"
+    }, {
+        "name": "net_profit",
+        "title": "Net profit",
+        "info": "Difference between Profit and Costs\n    Profit - Costs",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": true,
+        "order": 1200,
+        "type": "money",
+        "formula": "({net_cost}\n                    ? ( {revenue} - {net_cost} )\n                    : ( {revenue} * {$profitFactor}) ) - {marketing_cost}"
+    }, {
+        "name": "clients",
+        "title": "Clients",
+        "info": "Number of clients",
+        "group": "client",
+        "is_has_attribution_model": false,
+        "is_absolute": true,
+        "order": 3000,
+        "type": "integer",
+        "formula": "{clients} ? {clients} : 0"
+    }, {
+        "name": "repeated_leads",
+        "title": "Re-leads",
+        "info": "Number of re-leads\n    Leads - Clients",
+        "group": "client",
+        "is_has_attribution_model": false,
+        "is_absolute": true,
+        "order": 3200,
+        "type": "integer",
+        "formula": "{clients} ? ({leads} - {clients}) : 0"
+    }, {
+        "name": "repeated_leads_rate",
+        "title": "Re-leads, %",
+        "info": "Share of re-leads\n    Re-leads \/ Leads * 100%",
+        "group": "client",
+        "is_has_attribution_model": false,
+        "is_absolute": false,
+        "order": 3300,
+        "type": "percent",
+        "formula": "({clients} && {leads}) ? (({leads} - {clients}) * 100 \/ {leads}) : 0"
+    }, {
+        "name": "cac",
+        "title": "CAC",
+        "info": "Average cost of retention of a paid client\n    Costs \/ Paid clients",
+        "group": "client",
+        "is_has_attribution_model": false,
+        "is_absolute": false,
+        "order": 3600,
+        "type": "money",
+        "formula": "{paid_clients} ? ({marketing_cost} \/ {paid_clients}) : 0"
+    }, {
+        "name": "ltv",
+        "title": "LTV",
+        "info": "Average profit per client with paid orders\n  Profit \/ Clients with paid orders",
+        "group": "client",
+        "is_has_attribution_model": false,
+        "is_absolute": false,
+        "order": 3700,
+        "type": "money",
+        "formula": "{paid_clients} ? (\n                    ({net_cost}\n                        ? ( {revenue} - {net_cost} )\n                        : ( {revenue} * {$profitFactor} ))\n                    \/ {paid_clients}) : 0"
+    }, {
+        "name": "paid_clients",
+        "title": "Paid customers",
+        "info": "Учитываются уникальные клиенты в рамках календарного месяца. Если отчет строится за несколько месяцев, один и тот же клиент будет учтен несколько раз",
+        "group": "client",
+        "is_has_attribution_model": false,
+        "is_absolute": true,
+        "order": 3100,
+        "type": "integer",
+        "formula": "{paid_clients} ? {paid_clients} : 0"
+    }, {
+        "name": "repeated_sales",
+        "title": "Resales",
+        "info": "Number of resales\n    Sales - Paid clients",
+        "group": "client",
+        "is_has_attribution_model": false,
+        "is_absolute": true,
+        "order": 3400,
+        "type": "integer",
+        "formula": "{paid_clients} ? ({sales} - {paid_clients}) : 0"
+    }, {
+        "name": "repeated_sales_rate",
+        "title": "Resales, %",
+        "info": "Share of resales\n    Resales \/ Sales * 100%",
+        "group": "client",
+        "is_has_attribution_model": false,
+        "is_absolute": false,
+        "order": 3500,
+        "type": "percent",
+        "formula": "({paid_clients} && {sales}) ? (({sales} - {paid_clients}) * 100 \/ {sales}) : 0"
+    }, {
+        "name": "marketing_cost_rate",
+        "title": "SOC, %",
+        "info": "Share of advertising costs in profit\n    Costs \/ Profit * 100%",
+        "group": "cost",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 1600,
+        "type": "percent",
+        "formula": "{net_cost}\n                    ? (({revenue} - {net_cost}) !== 0\n                        ? {marketing_cost} \/ ({revenue} - {net_cost}) * 100\n                        : 0)\n                    : ({revenue}\n                        ? {marketing_cost} \/ ({revenue} * {$profitFactor}) * 100\n                        : 0)"
+    }, {
+        "name": "potential_cpo",
+        "title": "Predicted CPO",
+        "info": "Average cost of retention of apllications with status \"Paid\" and \"In progress\"\n    Costs \/ Predicted sales",
+        "group": "cost",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 2400,
+        "type": "money",
+        "formula": "{marketing_cost} && ({sales} || {leads_in_progress})\n                    ? ({marketing_cost}) \/ ({sales}+{leads_in_progress})\n                    : 0"
+    }, {
+        "name": "marginality_rate",
+        "title": "Margin, %",
+        "info": "Share of first cost from profit\n    Profit \/ First cost * 100%",
+        "group": "profit",
+        "is_has_attribution_model": true,
+        "is_absolute": false,
+        "order": 2000,
+        "type": "percent",
+        "formula": "{net_cost}\n                    ? ((({revenue} - {net_cost}) \/ {net_cost}) * 100)\n                    : 0"
+    }, {
+        "name": "event_meta_1",
+        "title": "Test",
+        "info": "Event Test",
+        "group": "events",
+        "is_has_attribution_model": false,
+        "is_absolute": true,
+        "order": 3800,
+        "type": "integer",
+        "formula": "{event_meta_1} ? {event_meta_1} : 0"
+    }, {
+        "name": "event_meta_unique_1",
+        "title": "Test (users)",
+        "info": "Number of users that triggered the event Test",
+        "group": "events",
+        "is_has_attribution_model": false,
+        "is_absolute": true,
+        "order": 3900,
+        "type": "integer",
+        "formula": "{event_meta_unique_1} ? {event_meta_unique_1} : 0"
+    }],
+    "status": "success"
+}

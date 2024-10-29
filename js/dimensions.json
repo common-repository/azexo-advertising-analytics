@@ -1,0 +1,156 @@
+{
+    "dimensions": [{
+        "name": "marker_level_1",
+        "title": "Source (level 1)",
+        "order": 100
+    }, {
+        "name": "marker_level_2",
+        "title": "Source (level 2)",
+        "order": 200
+    }, {
+        "name": "marker_level_3",
+        "title": "Source (level 3)",
+        "order": 300
+    }, {
+        "name": "marker_level_4",
+        "title": "Source (level 4)",
+        "order": 400
+    }, {
+        "name": "marker_level_5",
+        "title": "Source (level 5)",
+        "order": 500
+    }, {
+        "name": "marker_level_6",
+        "title": "Source (level 6)",
+        "order": 600
+    }, {
+        "name": "marker_level_7",
+        "title": "Source (level 7)",
+        "order": 700
+    }, {
+        "name": "utm_source",
+        "title": "utm_source",
+        "order": 800
+    }, {
+        "name": "utm_medium",
+        "title": "utm_medium",
+        "order": 900
+    }, {
+        "name": "utm_campaign",
+        "title": "utm_campaign",
+        "order": 1000
+    }, {
+        "name": "utm_term",
+        "title": "utm_term",
+        "order": 1100
+    }, {
+        "name": "utm_content",
+        "title": "utm_content",
+        "order": 1200
+    }, {
+        "name": "roistat_param1",
+        "title": "roistat_param1",
+        "order": 1300
+    }, {
+        "name": "roistat_param2",
+        "title": "roistat_param2",
+        "order": 1400
+    }, {
+        "name": "roistat_param3",
+        "title": "roistat_param3",
+        "order": 1500
+    }, {
+        "name": "roistat_param4",
+        "title": "roistat_param4",
+        "order": 1600
+    }, {
+        "name": "roistat_param5",
+        "title": "roistat_param5",
+        "order": 1700
+    }, {
+        "name": "host",
+        "title": "Domain",
+        "order": 1800
+    }, {
+        "name": "landing_page",
+        "title": "Landing page",
+        "order": 1900
+    }, {
+        "name": "referrer",
+        "title": "Source",
+        "order": 2000
+    }, {
+        "name": "referrer_host",
+        "title": "Source domain",
+        "order": 2100
+    }, {
+        "name": "country",
+        "title": "Country",
+        "order": 2200
+    }, {
+        "name": "city",
+        "title": "City",
+        "order": 2300
+    }, {
+        "name": "device",
+        "title": "Device",
+        "order": 1005002
+    }, {
+        "name": "browser",
+        "title": "Browser",
+        "order": 1005003
+    }, {
+        "name": "ad_position_type",
+        "title": "Display block",
+        "order": 2400
+    }, {
+        "name": "ad_position",
+        "title": "Display position",
+        "order": 2500
+    }, {
+        "name": "search_phrase",
+        "title": "Search query",
+        "order": 2600
+    }, {
+        "name": "daily",
+        "title": "Day",
+        "order": 2700
+    }, {
+        "name": "weekly",
+        "title": "Week",
+        "order": 2900
+    }, {
+        "name": "monthly",
+        "title": "Month",
+        "order": 3000
+    }, {
+        "name": "order_field_1",
+        "title": "Deal status",
+        "order": 3300
+    }, {
+        "name": "order_field_2",
+        "title": "Менеджер",
+        "order": 3400
+    }, {
+        "name": "event_meta_id",
+        "title": "Events",
+        "order": 3100
+    }, {
+        "name": "order_page",
+        "title": "Lead's page",
+        "order": 3200
+    }, {
+        "name": "hours",
+        "title": "Hour",
+        "order": 2650
+    }, {
+        "name": "week_days",
+        "title": "Day of the week",
+        "order": 2800
+    }, {
+        "name": "device_type",
+        "title": "Device Type",
+        "order": 1005001
+    }],
+    "status": "success"
+}

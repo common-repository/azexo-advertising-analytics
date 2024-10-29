@@ -1,0 +1,55 @@
+{
+    "money-format": "$0,0.00",
+    "float-format": "0,0.00",
+    "thousands-delimiter": ",",
+    "decimal-delimiter": ".",
+    "currency-symbol": "$",
+    "phone-mask": "+1(999) 999-9999",
+    "adwords-clientCustomerId": "",
+    "default-report": {
+        "name": "Default report",
+        "dimensions": [{
+                "dimension": "utm_source",
+                "filters": []
+            }, {
+                "dimension": "utm_medium",
+                "filters": []
+            }, {
+                "dimension": "utm_campaign",
+                "filters": []
+            }, {
+                "dimension": "utm_content",
+                "filters": []
+            }, {
+                "dimension": "utm_term",
+                "filters": []
+            }],
+        "metrics": [{
+                "metric": "visits_count",
+                "model": "last"
+            }, {
+                "metric": "leads_count",
+                "model": "last"
+            }, {
+                "metric": "sales_count",
+                "model": "last"
+            }, {
+                "metric": "marketing_cost_sum",
+                "model": "last"
+            }, {
+                "metric": "revenue_sum",
+                "model": "last"
+            }, {
+                "metric": "profit_sum",
+                "model": "last"
+            }, {
+                "metric": "roi",
+                "model": "last"
+            }],
+        "chart": {
+            "roi-last": {
+                "color": "#7fdbff"
+            }
+        }
+    }
+}
